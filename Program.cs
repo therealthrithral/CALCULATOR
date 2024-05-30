@@ -37,7 +37,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out firstNumber))
             {
-                Console.WriteLine(firstNumber);
+                Console.WriteLine();
             }
             else
             {
@@ -48,7 +48,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out secondNumber))
             {
-                Console.WriteLine(secondNumber);
+                Console.WriteLine();
             }
             else
             {
@@ -67,7 +67,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out firstNumber))
             {
-                Console.WriteLine(firstNumber);
+                Console.WriteLine();
             }
             else
             {
@@ -78,7 +78,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out secondNumber))
             {
-                Console.WriteLine(secondNumber);
+                Console.WriteLine();
             }
             else
             {
@@ -97,7 +97,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out firstNumber))
             {
-                Console.WriteLine(firstNumber);
+                Console.WriteLine();
             }
             else
             {
@@ -108,7 +108,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out secondNumber))
             {
-                Console.WriteLine(secondNumber);
+                Console.WriteLine();
             }
             else
             {
@@ -128,7 +128,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out firstNumber))
             {
-                Console.WriteLine(firstNumber);
+                Console.WriteLine();
             }
             else
             {
@@ -139,7 +139,7 @@ void RunCalculator()
             readResult = Console.ReadLine();
             if (Int32.TryParse(readResult, out secondNumber))
             {
-                Console.WriteLine(secondNumber);
+                Console.WriteLine();
             }
             else
             {
