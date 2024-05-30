@@ -12,3 +12,4 @@ C:\Users\dicklicker9000\Desktop\-IMPORTANT_CODING_PROJECTS-\C#\CALCULATOR\obj\De
 C:\Users\dicklicker9000\Desktop\-IMPORTANT_CODING_PROJECTS-\C#\CALCULATOR\obj\Debug\net8.0\CALCULATOR.pdb
 C:\Users\dicklicker9000\Desktop\-IMPORTANT_CODING_PROJECTS-\C#\CALCULATOR\obj\Debug\net8.0\CALCULATOR.genruntimeconfig.cache
 C:\Users\dicklicker9000\Desktop\-IMPORTANT_CODING_PROJECTS-\C#\CALCULATOR\obj\Debug\net8.0\ref\CALCULATOR.dll
+C:\Users\dicklicker9000\Desktop\-IMPORTANT_CODING_PROJECTS-\C#\CALCULATOR\obj\Debug\net8.0\CALCULATOR.sourcelink.json
