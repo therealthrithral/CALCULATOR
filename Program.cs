@@ -113,6 +113,9 @@ void RunCalculator()
             result = firstNumber * secondNumber;
             Console.WriteLine($"Your answer is: {firstNumber} * {secondNumber} = {result}");
             break;
+        case "%%":
+            CalcFizzBuzz();
+            break;
     }
 }
 
@@ -126,7 +129,31 @@ void CalcMenu()
     Console.WriteLine("Enter '+' for Addition");
     Console.WriteLine("Enter '-' for Subtraction");
     Console.WriteLine("Enter '*' for Multiplication");
+    Console.WriteLine("Enter '%%' for FizzBuzz 1 - 100");
     Console.WriteLine();
     Console.WriteLine("Press Enter to exit");
     readResult = Console.ReadLine();
+}
+
+void CalcFizzBuzz()
+{
+    for (int i = 1; i < 101; i++)
+    {
+        if (i % 3 == 0 && i % 5 == 0)
+        {
+            Console.WriteLine($"{i} - FizzBuzz");
+        }
+        else if (i % 3 == 0)
+        {
+            Console.WriteLine($"{i} - Fizz");
+        }
+        else if (i % 5 == 0)
+        {
+            Console.WriteLine($"{i} - Buzz");
+        }
+        else
+        {
+            Console.WriteLine(i);
+        }
+    }
 }
