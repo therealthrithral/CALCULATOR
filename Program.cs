@@ -6,14 +6,12 @@ RunCalculator();
 // main method for calculator functions.
 void RunCalculator()
 {
-    const string enterFirstNumber = "Please enter your first number.";
-    const string enterSecondNumber = "Please enter your second number.";
-    const string unableToParse = "String could not be parsed.";
 
-    int firstNumber = 0;
-    int secondNumber = 0;
-    int result = 0;
+    double result = 0;
 
+    Console.WriteLine("Enter numbers separated by spaces");
+    string input = Console.ReadLine();
+    double[] numbers = input.Split(' ').Select(double.Parse).ToArray();
     CalcMenu();
 
     // Switch Case for math operations
@@ -22,98 +20,36 @@ void RunCalculator()
         case "+":
 
             Console.WriteLine("You chose Addition. ");
+            result = Add(numbers);
+            Console.WriteLine(result);
 
-            Console.WriteLine(enterFirstNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-
-            Console.WriteLine(enterSecondNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-
-            result = firstNumber + secondNumber;
-            Console.WriteLine($"Your answer is: {firstNumber} + {secondNumber} = {result}");
             break;
 
         case "/":
 
             Console.WriteLine("You chose Division");
+            result = Divide(numbers);
+            Console.WriteLine(result);
 
-            Console.WriteLine(enterFirstNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-
-            Console.WriteLine(enterSecondNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-            try
-            {
-                result = firstNumber / secondNumber;
-            }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine($"DivideByZero Exception Caught : {ex.Message}");
-            }
-            Console.WriteLine($"Your answer is: {firstNumber} / {secondNumber} = {result}");
             break;
 
         case "-":
 
             Console.WriteLine("You chose Subtraction");
-
-            Console.WriteLine(enterFirstNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-
-            Console.WriteLine(enterSecondNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-
-            result = firstNumber - secondNumber;
-            Console.WriteLine($"Your answer is: {firstNumber} - {secondNumber} = {result}");
+            result = Subtract(numbers);
+            Console.WriteLine(result);
 
             break;
 
         case "*":
 
             Console.WriteLine("You chose Multiplication");
+            result = Multiply(numbers);
+            Console.WriteLine(result);
 
-            Console.WriteLine(enterFirstNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-
-            Console.WriteLine(enterSecondNumber);
-            readResult = Console.ReadLine();
-            if (!Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine(unableToParse);
-            }
-
-            result = firstNumber * secondNumber;
-            Console.WriteLine($"Your answer is: {firstNumber} * {secondNumber} = {result}");
             break;
         case "%%":
+
             CalcFizzBuzz();
             break;
     }
@@ -125,7 +61,7 @@ void RunCalculator()
 void CalcMenu()
 {
     Console.WriteLine("Please enter the symbol for the corresponding equation:");
-    Console.WriteLine("Enter '/' for Integer Division");
+    Console.WriteLine("Enter '/' for Division");
     Console.WriteLine("Enter '+' for Addition");
     Console.WriteLine("Enter '-' for Subtraction");
     Console.WriteLine("Enter '*' for Multiplication");
@@ -156,4 +92,45 @@ void CalcFizzBuzz()
             Console.WriteLine(i);
         }
     }
+}
+
+double Add(double[] numbers)
+{
+    return numbers.Sum();
+}
+
+double Subtract(double[] numbers)
+{
+    double result = numbers[0];
+
+    for (int i = 1; i < numbers.Length; i++)
+    {
+        result -= numbers[i];
+    }
+    return result;
+}
+
+double Multiply(double[] numbers)
+{
+    double result = 1;
+    foreach (double num in numbers)
+    {
+        result *= num;
+    }
+    return result;
+}
+
+double Divide(double[] numbers)
+{
+    double result = numbers[0];
+    for (int i = 1; i < numbers.Length; i++)
+    {
+        if (numbers[i] == 0)
+        {
+            Console.WriteLine("Divide By Zero encountered.");
+            return double.NaN; // Not a Number
+        }
+        result /= numbers[i];
+    }
+    return result;
 }
