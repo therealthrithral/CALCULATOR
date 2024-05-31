@@ -1,17 +1,7 @@
-﻿Console.WriteLine("Welcome to my Calculator.  Type in START to begin or type EXIT to terminate the program.");
+﻿string? readResult;
 
-string? readResult = Console.ReadLine();
-
-readResult = readResult.Trim().ToUpper();
-
-if (readResult.Equals("START"))
-{
-    RunCalculator();
-}
-else if (readResult.Equals("EXIT"))
-{
-    Console.WriteLine("Goodbye!");
-}
+Console.Clear();
+RunCalculator();
 
 // main method for calculator functions.
 void RunCalculator()
@@ -24,9 +14,9 @@ void RunCalculator()
     int secondNumber = 0;
     int result = 0;
 
-    Console.WriteLine("Please enter the symbol for the corresponding equation (/, +, -, *)");
-    readResult = Console.ReadLine();
+    CalcMenu();
 
+    // Switch Case for math operations
     switch (readResult)
     {
         case "+":
@@ -35,22 +25,14 @@ void RunCalculator()
 
             Console.WriteLine(enterFirstNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out firstNumber))
             {
                 Console.WriteLine(unableToParse);
             }
 
             Console.WriteLine(enterSecondNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out secondNumber))
             {
                 Console.WriteLine(unableToParse);
             }
@@ -65,27 +47,25 @@ void RunCalculator()
 
             Console.WriteLine(enterFirstNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out firstNumber))
             {
                 Console.WriteLine(unableToParse);
             }
 
             Console.WriteLine(enterSecondNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out secondNumber))
             {
                 Console.WriteLine(unableToParse);
             }
-
-            result = firstNumber / secondNumber;
+            try
+            {
+                result = firstNumber / secondNumber;
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine($"DivideByZero Exception Caught : {ex.Message}");
+            }
             Console.WriteLine($"Your answer is: {firstNumber} / {secondNumber} = {result}");
             break;
 
@@ -95,22 +75,14 @@ void RunCalculator()
 
             Console.WriteLine(enterFirstNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out firstNumber))
             {
                 Console.WriteLine(unableToParse);
             }
 
             Console.WriteLine(enterSecondNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out secondNumber))
             {
                 Console.WriteLine(unableToParse);
             }
@@ -126,22 +98,14 @@ void RunCalculator()
 
             Console.WriteLine(enterFirstNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out firstNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out firstNumber))
             {
                 Console.WriteLine(unableToParse);
             }
 
             Console.WriteLine(enterSecondNumber);
             readResult = Console.ReadLine();
-            if (Int32.TryParse(readResult, out secondNumber))
-            {
-                Console.WriteLine();
-            }
-            else
+            if (!Int32.TryParse(readResult, out secondNumber))
             {
                 Console.WriteLine(unableToParse);
             }
@@ -150,4 +114,19 @@ void RunCalculator()
             Console.WriteLine($"Your answer is: {firstNumber} * {secondNumber} = {result}");
             break;
     }
+}
+
+// Additional Methods to clean up code.  To add an operation, create a method, and then update the switch case accordingly. (I still need to do this)
+// Make sure to update CalcMenu method as well.
+
+void CalcMenu()
+{
+    Console.WriteLine("Please enter the symbol for the corresponding equation:");
+    Console.WriteLine("Enter '/' for Integer Division");
+    Console.WriteLine("Enter '+' for Addition");
+    Console.WriteLine("Enter '-' for Subtraction");
+    Console.WriteLine("Enter '*' for Multiplication");
+    Console.WriteLine();
+    Console.WriteLine("Press Enter to exit");
+    readResult = Console.ReadLine();
 }
